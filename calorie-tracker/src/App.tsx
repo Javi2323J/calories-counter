@@ -4,6 +4,7 @@ import { activityReducer, initialState } from './reducers/activity-reducer'
 
 import Form from './components/Form'
 import ActivityList from './components/ActivityList'
+import CalorieTracker from './components/CalorieTracker'
 
 function App(): React.JSX.Element {
   const [state, dispatch] = useReducer(activityReducer, initialState)
@@ -36,6 +37,14 @@ function App(): React.JSX.Element {
           />
         </div>
       </section>
+
+      <form className="bg-gray-800 py-10">
+        <div className="max-w-4xl mx-auto">
+          <CalorieTracker
+            activities={state.activities}
+          />
+        </div>
+      </form>
 
       <section className="p-10 mx-auto max-w-4xl">
         <ActivityList
