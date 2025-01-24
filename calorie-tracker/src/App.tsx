@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 
 import { activityReducer, initialState } from './reducers/activity-reducer'
 
@@ -7,6 +7,10 @@ import ActivityList from './components/ActivityList'
 
 function App(): React.JSX.Element {
   const [state, dispatch] = useReducer(activityReducer, initialState)
+
+  useEffect(() => { // Sincronizado con el state
+    localStorage.setItem('activities', JSON.stringify(state.activities))
+  }, [state.activities])
 
   return (
     <>
